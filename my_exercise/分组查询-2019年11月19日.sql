@@ -48,6 +48,7 @@ select MAX(salary), department_id from employees where email LIKE '%a%' GROUP BY
 select avg(salary), manager_id from employees GROUP BY manager_id
 select avg(salary), manager_id from employees where commission_pct IS NOT NULL GROUP BY manager_id
 
+#2019年12月4日
 #3、分组后筛选
 #案例：查询哪个部门的员工个数>5
 #①查询每个部门的员工个数
