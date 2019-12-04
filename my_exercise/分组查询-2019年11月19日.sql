@@ -48,18 +48,21 @@ select MAX(salary), department_id from employees where email LIKE '%a%' GROUP BY
 select avg(salary), manager_id from employees GROUP BY manager_id
 select avg(salary), manager_id from employees where commission_pct IS NOT NULL GROUP BY manager_id
 
-#2019年12月4日
-#3、分组后筛选
-#案例：查询哪个部门的员工个数>5
-#①查询每个部门的员工个数
-#② 筛选刚才①结果
-#案例2：每个工种有奖金的员工的最高工资>12000的工种编号和最高工资
-#案例3：领导编号>102的每个领导手下的最低工资大于5000的领导编号和最低工资
+#练习
+select * from employees
+#1.查询公司员工工资的最大值，最小值，平均值，总和
+select MAX(salary) , MIN(salary), ROUND(AVG(salary),2), CEIL(SUM(salary)) from employees
+#2.查询员工表中的最大入职时间和最小入职时间的相差天数 （DIFFRENCE）
+SELECT MAX(hiredate), MIN(hiredate), (MAX(hiredate) - MIN(hiredate))/1000/3600/24 DIFFRENCE from employees
+SELECT MAX(hiredate), MIN(hiredate), DATEDIFF(MAX(hiredate),MIN(hiredate)) DIFFRENCE from employees
+#DATEDIFF 函数
+select DATEDIFF(now(),'1992-12-15')
+select DATEDIFF(NOW(),'1995-08-22')
+SELECT DATEDIFF(now(),'1992-12-15') - DATEDIFF(NOW(),'1995-08-22')
+#3.查询部门编号为90的员工个数
+select COUNT(*) from employees where department_id = '90'
 
-#4.添加排序
-#案例：每个工种有奖金的员工的最高工资>6000的工种编号和最高工资,按最高工资升序
-#5.按多个字段分组
-#案例：查询每个工种每个部门的最低工资,并按最低工资降序
+
 
 
 
