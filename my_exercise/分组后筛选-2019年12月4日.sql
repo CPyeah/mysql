@@ -54,3 +54,21 @@ ORDER BY
 SELECT job_id, MAX(salary) from employees GROUP BY job_id HAVING MAX(salary) > 6000 ORDER BY MAX(salary)
 #案例：查询每个工种每个部门的最低工资,并按最低工资降序
 SELECT job_id, department_id, MIN(salary) m from employees GROUP BY job_id, department_id ORDER BY m DESC
+
+
+练习:
+select * from employees
+#1.查询各job_id的员工工资的最大值，最小值，平均值，总和，并按job_id升序
+SELECT MAX(salary), MIN(salary), avg(salary), SUM(salary), job_id from employees GROUP BY job_id ORDER BY job_id
+
+#2.查询员工最高工资和最低工资的差距（DIFFERENCE）
+SELECT MAX(salary),MIN(salary), MAX(salary)-MIN(salary) DIFFERENCE from employees
+
+#3.查询各个管理者手下员工的最低工资，其中最低工资不能低于6000，没有管理者的员工不计算在内
+SELECT MIN(salary), manager_id from employees where manager_id IS NOT NULL GROUP BY manager_id HAVING MIN(salary)>=6000
+
+#4.查询所有部门的编号，员工数量和工资平均值,并按平均工资降序
+SELECT department_id, count(*), avg(salary) from employees GROUP BY department_id order BY AVG(salary) DESC
+
+#5.选择具有各个job_id的员工人数
+SELECT job_id, COUNT(*) from employees GROUP BY job_id
