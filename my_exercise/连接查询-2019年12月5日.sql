@@ -153,9 +153,37 @@ AND d.location_id = l.location_id
 
 
 #2、非等值连接
-
 #案例1：查询员工的工资和工资级别
+SELECT
+	employee_id,
+	salary,
+	grade_level
+FROM
+	employees e,
+	job_grades jd
+WHERE
+	e.salary >= jd.lowest_sal
+AND e.salary <= jd.highest_sal
 
-#3、自连接
+SELECT
+	employee_id,
+	salary,
+	grade_level
+FROM
+	employees e,
+	job_grades jd
+WHERE
+	e.salary BETWEEN jd.lowest_sal
+AND jd.highest_sal
+ORDER BY grade_level
 
+#3、自连接(自己与自己的等值连接)
 #案例：查询 员工名和上级的名称
+SELECT
+	e.last_name 员工名,
+	m.last_name 上级名
+FROM
+	employees e,
+	employees m
+WHERE
+	m.employee_id = e.manager_id
