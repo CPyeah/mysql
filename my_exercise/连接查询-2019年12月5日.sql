@@ -57,11 +57,12 @@ WHERE beauty.boyfriend_id= boys.id;
 #一、sql92标准
 #1、等值连接
 /*
+多表等值连接总结:
 ① 多表等值连接的结果为多表的交集部分
-②n表连接，至少需要n-1个连接条件
+② n表连接，至少需要n-1个连接条件
 ③ 多表的顺序没有要求
-④一般需要为表起别名
-⑤可以搭配前面介绍的所有子句使用，比如排序、分组、筛选
+④ 一般需要为表起别名
+⑤ 可以搭配前面介绍的所有子句使用，比如排序、分组、筛选
 */
 
 #案例1：查询女神名和对应的男神名
@@ -119,13 +120,37 @@ where d.department_id = e.department_id
 AND e.commission_pct is not NULL
 GROUP BY e.department_id
 
+2019年12月6日
 #6、可以加排序
-
 #案例：查询每个工种的工种名和员工的个数，并且按员工个数降序
+SELECT
+	e.job_id,
+	job_title,
+	COUNT(*)
+FROM
+	employees e,
+	jobs j
+WHERE
+	e.job_id = j.job_id
+GROUP BY
+	e.job_id
+ORDER BY
+	COUNT(*) DESC
 
 #7、可以实现三表连接？
-
 #案例：查询员工名、部门名和所在的城市
+SELECT
+	last_name,
+	department_name,
+	city
+FROM
+	employees e,
+	departments d,
+	locations l
+WHERE
+	e.department_id = d.department_id
+AND d.location_id = l.location_id
+
 
 #2、非等值连接
 
