@@ -163,6 +163,7 @@ select STR_TO_DATE('19-7-8','%y-%c-%e')
 	date_format
 SELECT DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')
 SELECT DATE_FORMAT(now(),'%Y-%m-%d %T')
+select DATEDIFF(NOW(),'1992-12-15')
 
 	其他函数：
 	version
