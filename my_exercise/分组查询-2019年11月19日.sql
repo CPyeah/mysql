@@ -5,9 +5,11 @@
 
 select 查询列表
 from 表
-【where 筛选条件】
+【where 筛选前条件】
 group by 分组的字段
+【having 分组后筛选】
 【order by 排序的字段】;
+执行顺序: from, where, group_by, having, select, order_by
 
 特点：
 1、和分组函数一同查询的字段必须是group by后出现的字段

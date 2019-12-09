@@ -117,6 +117,8 @@ SELECT MOD(13, 3) -- 1
 SELECT MOD(13, -3) -- 1
 SELECT MOD(-13, 3) -- -1
 SELECT MOD(-13, -3) -- -1
+  rand 取随机数(0~1之间)
+SELECT RAND();
 	
 	日期函数：
 	now
