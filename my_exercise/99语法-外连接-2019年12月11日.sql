@@ -68,7 +68,7 @@ RIGHT JOIN departments d ON d.department_id = e.department_id
 WHERE
 	e.employee_id IS NULL
 
- #全外(不支持)
+ #全外(mysql不支持)
 SELECT
 	*
 FROM
