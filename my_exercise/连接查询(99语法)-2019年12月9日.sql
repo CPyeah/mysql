@@ -124,6 +124,44 @@ INNER JOIN jobs j ON e.job_id = j.job_id
 ORDER BY
 	department_name DESC
 
+2019年12月11日
+#二）非等值连接
+#查询员工的工资级别
+SELECT
+	salary,
+	grade_level
+FROM
+	employees e
+INNER JOIN job_grades jd ON e.salary BETWEEN jd.lowest_sal
+AND jd.highest_sal
+#查询工资级别的个数>20的个数，并且按工资级别降序
+SELECT
+	grade_level,
+	COUNT(*) count
+FROM
+	employees e
+INNER JOIN job_grades jd ON e.salary BETWEEN jd.lowest_sal
+AND jd.highest_sal GROUP BY grade_level HAVING count > 20 ORDER BY grade_level DESC
+
+
+#三）自连接
+select * from employees
+#查询员工的名字、上级的名字
+SELECT
+	e.last_name,
+	m.last_name
+FROM
+	employees e
+INNER JOIN employees m ON e.manager_id = m.employee_id
+#查询姓名中包含字符k的员工的名字、上级的名字
+SELECT
+	e.last_name,
+	m.last_name
+FROM
+	employees e
+INNER JOIN employees m ON e.manager_id = m.employee_id
+WHERE e.last_name LIKE '%k%'
+
 
 
 
