@@ -165,11 +165,15 @@ SELECT EXISTS(SELECT employee_id FROM employees WHERE salary=300000);
 
 #案例1：查询有员工的部门名
 #in
+SELECT department_name from departments WHERE department_id in (SELECT DISTINCT department_id FROM employees)
 #exists
+SELECT department_name from departments d WHERE EXISTS(SELECT * FROM employees e where e.department_id = d.department_id)
 
 #案例2：查询没有女朋友的男神信息
 #in
+SELECT b.* from boys b WHERE b.id not in (SELECT DISTINCT boyfriend_id FROM beauty)
 #exists
+SELECT bo.* from boys bo where NOT EXISTS(SELECT * from beauty be where be.boyfriend_id = bo.id)
 
 
 
