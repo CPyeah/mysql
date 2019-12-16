@@ -145,10 +145,13 @@ from employees e where e.employee_id = 102
 /*
 将子查询结果充当一张表，要求必须起别名
 */
-
 #案例：查询每个部门的平均工资的工资等级
 #①查询每个部门的平均工资
+SELECT department_id , (SELECT AVG(salary) from employees e where e.department_id = d.department_id) avg from departments d
 #②连接①的结果集和job_grades表，筛选条件平均工资 between lowest_sal and highest_sal
+SELECT t.*, grade_level FROM
+(SELECT department_id , (SELECT AVG(salary) from employees e where e.department_id = d.department_id) avg from departments d) t
+INNER JOIN job_grades j ON t.avg between lowest_sal and highest_sal
 
 
 #四、exists后面（相关子查询）
