@@ -17,35 +17,33 @@
 	①limit语句放在查询语句的最后
 	②公式
 	要显示的页数 page，每页的条目数size
+
 	select 查询列表
 	from 表
 	limit (page-1)*size,size;
+
 	size=10
-	page  
+	page
 	1	0
 	2  	10
 	3	20
-	
+
 */
+limit 【offset,】size;
+	offset要显示条目的起始索引（起始索引从0开始）
+	size 要显示的条目个数
+
 #案例1：查询前五条员工信息
-
-
-SELECT * FROM  employees LIMIT 0,5;
-SELECT * FROM  employees LIMIT 5;
-
+SELECT * from employees LIMIT 5
+SELECT * from employees LIMIT 0, 5
 
 #案例2：查询第11条——第25条
-SELECT * FROM  employees LIMIT 10,15;
-
+SELECT * from employees LIMIT 25
+SELECT * from employees LIMIT 10, 15
 
 #案例3：有奖金的员工信息，并且工资较高的前10名显示出来
-SELECT 
-    * 
-FROM
-    employees 
-WHERE commission_pct IS NOT NULL 
-ORDER BY salary DESC 
-LIMIT 10 ;
+SELECT * from employees WHERE commission_pct is NOT NULL
+ORDER BY salary DESC LIMIT 10
 
 #分页常规操作
 size: 12
@@ -61,4 +59,38 @@ LIMIT 12, 12
 #page 2
 select * from employees
 LIMIT 24, 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
