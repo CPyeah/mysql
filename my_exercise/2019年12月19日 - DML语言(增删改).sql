@@ -50,7 +50,18 @@ set 列名=值,列名=值,...
 
 
 #1、方式一支持插入多行,方式二不支持
+INSERT INTO beauty
+VALUES(23,'唐艺昕1','女','1990-4-23','1898888888',NULL,2)
+,(24,'唐艺昕2','女','1990-4-23','1898888888',NULL,2)
+,(25,'唐艺昕3','女','1990-4-23','1898888888',NULL,2);
+
 #2、方式一支持子查询，方式二不支持
+INSERT INTO beauty(id,NAME,phone)
+SELECT 26,'宋茜','11809866';
+
+INSERT INTO beauty(id,NAME,phone)
+SELECT id,boyname,'1234567'
+FROM boys WHERE id<3;
 
 
 
