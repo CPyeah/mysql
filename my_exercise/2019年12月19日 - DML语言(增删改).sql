@@ -2,7 +2,12 @@
 /*
 数据操作语言：
 插入：insert
+  insert into 表名(列名,...) values(值1,...);
+  insert into 表名 set 列名=值,列名=值,...
 修改：update
+  update 表名 set 列=新值,列=新值,... where 筛选条件;
+  update 表1 别名,表2 别名  set 列=值,... where 连接条件  and 筛选条件;
+  update 表1 别名  inner|left|right join 表2 别名 on 连接条件 set 列=值,... where 筛选条件;
 删除：delete
 
 */
